@@ -4,8 +4,8 @@ from app.models import BikePart, Place
 
 @app.route('/')
 def index():
-    parts = BikePart.query.all()
-    return render_template('index.html', parts=parts)
+    #parts = BikePart.query.all()
+    return render_template('index.html', Title="Home")
 
 @app.route('/part/<int:part_id>')
 def part_details(part_id):
@@ -25,7 +25,6 @@ def add_part():
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('add_part.html')
-    return render_template('index.html', title='Home')
 
 @app.route("/repair")
 def repair():
