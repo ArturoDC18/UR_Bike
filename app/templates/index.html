@@ -1,38 +1,56 @@
 {% extends "base.html" %}
 
 {% block main %}
+<div id="map" style="width: 95%; height: 80vh;"></div>
+{% endblock %}
 
-    <body>
-        <h1>This will be a successful project inshallah!</h1>
-        <h1>Ainhoa will handle this. </h1>
-        <h6>Does this work?</h6>
+{% block scripts %}
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoicGhhcmkiLCJhIjoiY20za2oza2twMGZ0ZTJpcHd4bm1rNnZsYSJ9.aTw69jaVO9sD3m81sMObfg';
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/navigation-guidance-day-v4',
+  center: [-77.6298, 43.1286], // Coordinates for University of Rochester
+  zoom: 16.4,
+  pitch: 0, // Keep the pitch to 0 for top-down view
+  bearing: 0,
+  antialias: true
+});
 
-        <hr>
 
-        <h2>Bike Parts Database</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Part Name</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for part in parts %}
-                <tr>
-                    <td>{{ part.id }}</td>
-                    <td>{{ part.name }}</td>
-                    <td><a href="{{ url_for('part_details', part_id=part.id) }}" class="btn btn-info btn-sm">View</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
 
-        <a href="{{ url_for('add_part') }}" class="btn btn-primary">Add New Part</a>
-
-    </body>
-
-    
-
+// Add 3D buildings
+map.on('load', () => {
+  map.addLayer({
+    'id': '3d-buildings',
+    'source': 'composite',
+    'source-layer': 'building',
+    'filter': ['==', 'extrude', 'true'],
+    'type': 'fill-extrusion',
+    'minzoom': 15,
+    'paint': {
+      'fill-extrusion-color': '#aaa',
+      'fill-extrusion-height': [
+        'interpolate',
+        ['linear'],
+        ['zoom'],
+        15,
+        0,
+        15.05,
+        ['get', 'height']
+      ],
+      'fill-extrusion-base': [
+        'interpolate',
+        ['linear'],
+        ['zoom'],
+        15,
+        0,
+        15.05,
+        ['get', 'min_height']
+      ],
+      'fill-extrusion-opacity': 0.6
+    }
+  });
+});
+</script>
 {% endblock %}
