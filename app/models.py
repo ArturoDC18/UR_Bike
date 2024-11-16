@@ -19,14 +19,12 @@ class Place(db.Model):
 
     def __repr__(self):
         return '<Place {}>'.format(self.name)
+    
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     admin = db.Column(db.Boolean, default=False)
     password_hash = db.Column(db.String(128))
-
-    def __repr__(self):
-        return '<User {}>'.format(self.username)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
