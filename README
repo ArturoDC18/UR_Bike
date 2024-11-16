@@ -1,0 +1,4 @@
+TO RUN: 
+- Activate the virtual environment by running `source Venv/bin/activate`
+- Install flask in your terminal by running `pip install flask`
+- run the app by executing 'flask run'
