@@ -1,23 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="POST">
-        <div class="mb-3">
-            <label for="name" class="form-label">Part Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="where_to_buy" class="form-label">Where to Buy</label>
-            <textarea class="form-control" id="where_to_buy" name="where_to_buy" rows="2" required></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="how_to_fix" class="form-label">How to Fix</label>
-            <textarea class="form-control" id="how_to_fix" name="how_to_fix" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Add Part</button>
-    </form>
+<h2>Add New Part</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="name">Part Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="description" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="where_to_buy">Where to Buy:</label>
+        <input type="text" class="form-control" id="where_to_buy" name="where_to_buy">
+    </div>
+    <div class="form-group">
+        <label for="how_to_fix">How to Fix:</label>
+        <textarea class="form-control" id="how_to_fix" name="how_to_fix"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Part</button>
+</form>
 {% endblock %}

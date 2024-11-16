@@ -9,8 +9,6 @@ class BikePart(db.Model):
     how_to_fix = db.Column(db.Text, nullable=False)
 
 # Initialize the database (Run this once to create the DB schema)
-def init_db():
-    db.create_all()
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True)
@@ -22,3 +20,6 @@ class Place(db.Model):
 
     def __repr__(self):
         return '<Place {}>'.format(self.name)
+
+def init_db():
+    db.create_all()
