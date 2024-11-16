@@ -6,4 +6,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:rbUWeKiW44O4o1egPHwd@recs
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-from app import routes
+from app import routes, models
