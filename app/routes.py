@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from app import app, db
-from app.models import BikePart
+from app.models import BikePart, Place
 
 @app.route('/')
 def index():
