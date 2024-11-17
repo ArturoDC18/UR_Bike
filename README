@@ -1,4 +1,5 @@
 TO RUN: 
 - Activate the virtual environment by running `source Venv/bin/activate`, ainhoa 'Venv/bin/activate'
 -Type in terminal 'export FLASK_APP=UR_Bike.py' ainhoa, 'set FLASK_APP=UR_Bike.py'
+- Download APIS by running 'pip install -r requirements.txt'
 - run the app by executing 'flask run' ainhoa, 'py -m flask run'
