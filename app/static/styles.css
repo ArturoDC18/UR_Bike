@@ -191,4 +191,21 @@ body * {
   margin-bottom: 5px; /* Space between individual messages */
 }
 
+.custom-button {
+  display: inline-block;
+  background-color: #c0c0ae; /* Off-white color */
+  color: #06402B; /* Dark green text */
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px; /* Rounded corners */
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #a8a892; /* Slightly darker off-white on hover */
+}
 
