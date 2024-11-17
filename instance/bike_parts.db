@@ -1,0 +1,17 @@
+from app import db
+from app.models import BikePart
+
+# Create some sample bike parts
+bike_parts = [
+    BikePart(name='Saddle', description='A comfortable bike seat.', where_to_buy='Online Store', how_to_fix='Tighten the screws'),
+    BikePart(name='Pedals', description='Pedals for your bike.', where_to_buy='Bike Shop', how_to_fix='Replace the worn-out pedals'),
+    BikePart(name='Handlebars', description='The handlebars for steering.', where_to_buy='Bike Shop', how_to_fix='Adjust height or replace if damaged'),
+    BikePart(name='Tires', description='Durable tires for mountain bikes.', where_to_buy='Online Store', how_to_fix='Inflate or replace if damaged'),
+    BikePart(name='Brakes', description='Effective brakes for bike safety.', where_to_buy='Bike Shop', how_to_fix='Tighten or replace brake pads'),
+]
+
+# Add and commit the sample data
+db.session.add_all(bike_parts)
+db.session.commit()
+
+print("Sample bike parts added to the database.")
