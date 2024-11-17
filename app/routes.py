@@ -35,18 +35,27 @@ def add_part():
 
     return render_template('add_part.html')
 
-@app.route("/repair", methods=['GET', 'POST'])
+@app.route('/repair', methods=['GET', 'POST'])
 def repair():
-    search_term = request.args.get('search')  # Get the search term from the URL
+    # Get the category from the query parameters (default to 'Saddle' if not provided)
+    category = request.args.get('category', 'Saddle')  # default to 'Saddle' category if no category is specified
     
-    if search_term:
-        # Perform the search if the term exists
-        parts = BikePart.query.filter(BikePart.name.ilike(f"%{search_term}%")).all()
-    else:
-        # If no search term is provided, fetch all bike parts
-        parts = BikePart.query.all()
+    # Get the search term from the query parameters (if any)
+    search_term = request.args.get('search', '')  # default to empty string if no search term is provided
 
-    return render_template('repair.html', title='Repair', parts=parts)
+    # Query for bike parts in the selected category and with the search term in the name or description
+    if search_term:
+        # Search for parts that match the search term in either the name or description
+        parts = BikePart.query.filter(BikePart.category == category, 
+                                      (BikePart.name.ilike(f'%{search_term}%') | 
+                                       BikePart.description.ilike(f'%{search_term}%'))).all()
+    else:
+        # No search term, just get all parts in the category
+        parts = BikePart.query.filter_by(category=category).all()
+    
+    # Render the template with the bike parts and the category
+    return render_template('repair.html', parts=parts, category=category, search_term=search_term)
+
 
 # Places Page
 @app.route('/add_place', methods=['POST'])
