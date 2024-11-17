@@ -7,9 +7,13 @@ from sqlalchemy.sql import func
 class BikePart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=False)
-    where_to_buy = db.Column(db.Text, nullable=False)
-    how_to_fix = db.Column(db.Text, nullable=False)
+    description = db.Column(db.String(200))
+    price = db.Column(db.Float)
+    buy_link = db.Column(db.String(200))  # New field for Where to Buy link
+    category = db.Column(db.String(100))
+    
+    def __repr__(self):
+        return f'<BikePart {self.name}>'
 
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
