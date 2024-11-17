@@ -58,10 +58,17 @@ def add_part():
 
     return render_template('add_part.html')
 
-@app.route("/repair")
+@app.route("/repair", methods=['GET', 'POST'])
 def repair():
-    parts = BikePart.query.all()
-    print(parts)
+    search_term = request.args.get('search')  # Get the search term from the URL
+    
+    if search_term:
+        # Perform the search if the term exists
+        parts = BikePart.query.filter(BikePart.name.ilike(f"%{search_term}%")).all()
+    else:
+        # If no search term is provided, fetch all bike parts
+        parts = BikePart.query.all()
+
     return render_template('repair.html', title='Repair', parts=parts)
 
 

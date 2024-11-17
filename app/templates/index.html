@@ -4,6 +4,11 @@
 <div class="map-container">
     <div id="map"></div>
 </div>
+<div class="button-container text-center mt-4">
+  <a href="/index" class="custom-button">Recommendations</a>
+  <a href="/index" class="custom-button">Routes</a>
+  <a href="/repair" class="custom-button">Repair</a>
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -21,9 +26,34 @@ document.addEventListener("DOMContentLoaded", () => {
     antialias: true
   });
 
-  
+
   const nav = new mapboxgl.NavigationControl();
   map.addControl(nav);
+
+//   //adding directions
+// var mapboxgl = require('mapbox-gl');
+// var MapboxDirections = require('@mapbox/mapbox-gl-directions');
+
+// var directions = new MapboxDirections({
+//   accessToken: 'pk.eyJ1IjoicGhhcmkiLCJhIjoiY20za2oza2twMGZ0ZTJpcHd4bm1rNnZsYSJ9.aTw69jaVO9sD3m81sMObfg',
+// });
+
+
+// map.addControl(directions, 'top-left');
+
+// Adding directions without require statements
+var directions = new MapboxDirections({
+  accessToken: 'pk.eyJ1IjoicGhhcmkiLCJhIjoiY20za2oza2twMGZ0ZTJpcHd4bm1rNnZsYSJ9.aTw69jaVO9sD3m81sMObfg',
+  profile: 'mapbox/cycling',
+  controls: {
+    inputs: true,           // Show or hide the origin and destination inputs
+    profileSwitcher: false, // Disable profile switching
+    instructions: false     // Hide turn-by-turn instructions
+    
+  }
+});
+
+map.addControl(directions, 'top-left');
 
 
 

@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
+
 body {
   margin: 0;
   padding: 0;
   background-color: #06402B;
   color: #c0c0ae;
   font-family: 'Arial', sans-serif;
+  overflow: hidden;
 }
 
 body::after {
@@ -128,5 +130,109 @@ body * {
 }
 
 
+.mapboxgl-ctrl-directions-summary {
+  display: none;
+}
 
+
+.mapboxgl-ctrl-directions-summary {
+  display: none;
+}
+
+.form-outline {
+  margin-bottom: 1rem; /* Add spacing between form fields */
+}
+
+.form-control {
+  width: 100%; /* Ensure full width for form controls */
+  padding: 0.75rem 1.25rem; /* Add padding for better touch targets */
+  font-size: 1rem; /* Adjust font size for better readability */
+  border-radius: 0.25rem; /* Add some border radius for a nice look */
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333
+}
+
+.form-label {
+  margin-left: 0.5rem; /* Add a little space to label */
+}
+
+.btn-primary {
+  width: 100%; /* Full width button */
+  background-color: #4CAF50;
+  border: none;
+}
+
+.btn-primary:hover { 
+  background-color: #45a049; /* Darker green for hover effect */ 
+}
+
+.vh-100 {
+  height: 100vh; /* Full viewport height */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  margin-top: -5vh;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+#register-link {
+  color: #c0c0ae; /* Same color as .nav-links a */
+  text-decoration: none;
+  font-size: inherit; /* Responsive font size */
+}
+
+#register-link:hover {
+  text-decoration: underline;
+}
+
+.alert-messages {
+  margin-top: 20px; /* Add margin to move the messages down */
+  padding: 10px; /* Add padding for better readability */
+  background-color: rgba(76, 175, 80, 0.3);
+  border: 1px solid #4CAF50; /* Border to match the background color */
+  color: white; /* Dark red text color */
+  border-radius: 4px; /* Rounded corners */
+  list-style-type: none; /* Remove bullet points */
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.alert-messages li {
+  margin-bottom: 5px; /* Space between individual messages */
+}
+
+.custom-button {
+  display: inline-block;
+  background-color: #c0c0ae; /* Off-white color */
+  color: #06402B; /* Dark green text */
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px; /* Rounded corners */
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #a8a892; /* Slightly darker off-white on hover */
+}
 
