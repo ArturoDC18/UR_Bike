@@ -1,7 +1,7 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, jsonify
 from app import app, db
 from app.models import BikePart, Place, User
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, PlaceForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 
@@ -9,8 +9,31 @@ import sqlalchemy as sa
 @app.route('/')
 @app.route('/index')
 def index():
-    parts = BikePart.query.all()
+    
     return render_template('index.html', title="Home")
+
+@app.route('/locations', methods=['GET'])
+def get_locations():
+    locations = Place.query.all()
+    return jsonify([
+        {'id': loc.id, 'name': loc.name, 'latitude': loc.latitude, 'longitude': loc.longitude, 'parking': loc.parking, 'repair': loc.repair, 'recommendation': loc.recommendation, 'description': loc.description}
+        for loc in locations
+    ])
+
+@app.route("/add_place", methods=['GET', 'POST'])
+@login_required
+def add_place():
+    if not current_user.admin:
+        flash('You are not an admin')
+        render_template('index.html', title="Home")
+    form = PlaceForm()
+    if form.validate_on_submit():
+        place = Place(name=form.name.data, latitude=form.latitude.data, longitude=form.longitude.data, picture=form.picture.data, description=form.description.data, parking=form.parking.data, repair=form.repair.data, recommendation=form.recommendation.data)
+        db.session.add(place)
+        db.session.commit()
+        flash('Congratulations, you have added a new place!')
+        return redirect(url_for('index'))
+    return render_template('add_place.html', title='Add Place',form=form)
 
 # Parts Page
 @app.route('/part/<int:part_id>')
@@ -35,27 +58,28 @@ def add_part():
 
     return render_template('add_part.html')
 
-@app.route("/repair", methods=['GET', 'POST'])
+@app.route('/repair', methods=['GET', 'POST'])
 def repair():
-    search_term = request.args.get('search')  # Get the search term from the URL
+    # Get the category from the query parameters (default to 'Saddle' if not provided)
+    category = request.args.get('category', 'Saddle')  # default to 'Saddle' category if no category is specified
     
+    # Get the search term from the query parameters (if any)
+    search_term = request.args.get('search', '')  # default to empty string if no search term is provided
+
+    # Query for bike parts in the selected category and with the search term in the name or description
     if search_term:
-        # Perform the search if the term exists
-        parts = BikePart.query.filter(BikePart.name.ilike(f"%{search_term}%")).all()
+        # Search for parts that match the search term in either the name or description
+        parts = BikePart.query.filter(BikePart.category == category, 
+                                      (BikePart.name.ilike(f'%{search_term}%') | 
+                                       BikePart.description.ilike(f'%{search_term}%'))).all()
     else:
-        # If no search term is provided, fetch all bike parts
-        parts = BikePart.query.all()
+        # No search term, just get all parts in the category
+        parts = BikePart.query.filter_by(category=category).all()
+    
+    # Render the template with the bike parts and the category
+    return render_template('repair.html', parts=parts, category=category, search_term=search_term)
 
-    return render_template('repair.html', title='Repair', parts=parts)
 
-# Places Page
-@app.route('/add_place', methods=['POST'])
-def add_place():
-    data = request.get_json()
-    place = Place(name=data['name'], latitude= data['latitude'], longitude= data['longitude'], picture= data['picture'], description= data['description'], tags= data['tags'])
-    db.session.add(place)
-    db.session.commit()
-    return jsonify({'status': 'OK'})
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

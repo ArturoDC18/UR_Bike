@@ -7,18 +7,24 @@ from sqlalchemy.sql import func
 class BikePart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=False)
-    where_to_buy = db.Column(db.Text, nullable=False)
-    how_to_fix = db.Column(db.Text, nullable=False)
+    description = db.Column(db.String(200))
+    price = db.Column(db.Float)
+    buy_link = db.Column(db.String(200))  # New field for Where to Buy link
+    category = db.Column(db.String(100))
+    
+    def __repr__(self):
+        return f'<BikePart {self.name}>'
 
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True)
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
-    picture = db.Column(db.String(128))
+    picture = db.Column(db.String(128), nullable = True)
     description = db.Column(db.String(128))
-    tags = db.Column(db.String(128))
+    parking = db.Column(db.Boolean, default=False)
+    repair = db.Column(db.Boolean, default=False)
+    recommendation = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return '<Place {}>'.format(self.name)
@@ -35,6 +41,8 @@ class User(UserMixin, db.Model):
         self.password_hash = generate_password_hash(password)
     def set_admin(self):
         self.admin=True
+    def is_admin(self):
+        return self.admin
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 

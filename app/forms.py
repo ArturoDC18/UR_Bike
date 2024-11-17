@@ -10,6 +10,16 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Sign In')
 
+class PlaceForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    latitude = StringField('Latitude', validators=[DataRequired()])
+    longitude = StringField('Longitude', validators=[DataRequired()])
+    picture = StringField('Picture')
+    description = StringField('Description', validators=[DataRequired()])
+    parking = BooleanField('Parking')
+    repair = BooleanField('Repair')
+    recommendation = BooleanField('Recommendation')
+    submit = SubmitField('Add Place')
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
