@@ -1,20 +1,35 @@
 {% extends "base.html" %}
 
-
 {% block main %}
-<h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="container">
+        <h1 class="text-center mb-4">Sign In</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
 
-    <p>New user? <a href="{{ url_for('register') }}">Register here.</a></p>
+                    <!-- Username input -->
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        {{ form.username(class="form-control", size=32, placeholder="Username") }}
+                    </div>
+
+                    <!-- Password input -->
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        {{ form.password(class="form-control", size=32, placeholder="Password") }}
+                    </div>
+                    <!-- Submit button -->
+                    <div class="text-center">
+                        <p>{{ form.submit(class="btn btn-primary btn-block mb-4") }}</p>
+                    </div>
+                </form>
+                
+                <p class="text-center">New user? <a href="{{ url_for('register') }}" id="register-link">Register here.</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+
+

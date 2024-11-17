@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
+
 body {
   margin: 0;
   padding: 0;
@@ -110,6 +111,63 @@ body * {
   border-radius: 50%; /* Optional: For rounded markers */
 }
 
+.form-outline {
+  margin-bottom: 1rem; /* Add spacing between form fields */
+}
 
+.form-control {
+  width: 100%; /* Ensure full width for form controls */
+  padding: 0.75rem 1.25rem; /* Add padding for better touch targets */
+  font-size: 1rem; /* Adjust font size for better readability */
+  border-radius: 0.25rem; /* Add some border radius for a nice look */
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333
+}
 
+.form-label {
+  margin-left: 0.5rem; /* Add a little space to label */
+}
 
+.btn-primary {
+  width: 100%; /* Full width button */
+  background-color: #4CAF50;
+  border: none;
+}
+
+.btn-primary:hover { 
+  background-color: #45a049; /* Darker green for hover effect */ 
+}
+
+.vh-100 {
+  height: 100vh; /* Full viewport height */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  margin-top: -5vh;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+#register-link {
+  color: #c0c0ae; /* Same color as .nav-links a */
+  text-decoration: none;
+  font-size: 2vh; /* Responsive font size */
+}
+
+#register-link:hover {
+  text-decoration: underline;
+}
