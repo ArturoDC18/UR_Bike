@@ -4,6 +4,20 @@ from app.models import BikePart, Place, User
 from app.forms import LoginForm, RegistrationForm, PlaceForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
+import cloudinary 
+import cloudinary.uploader
+from cloudinary.utils import cloudinary_url
+from flask_uploads import UploadSet, IMAGES, configure_uploads
+
+cloudinary.config( 
+    cloud_name = "dewgcl5yt", 
+    api_key = "751743494494111", 
+    api_secret = "<your_api_secret>", # Click 'View API Keys' above to copy your API secret
+    secure=True
+)
+app.config['UPLOADED_PHOTOS_DEST']='static/images'
+photos= UploadSet('photos', IMAGES)
+configure_uploads(app,photos)
 
 # Home Page
 @app.route('/')
@@ -28,11 +42,22 @@ def add_place():
         render_template('index.html', title="Home")
     form = PlaceForm()
     if form.validate_on_submit():
-        place = Place(name=form.name.data, latitude=form.latitude.data, longitude=form.longitude.data, picture=form.picture.data, description=form.description.data, parking=form.parking.data, repair=form.repair.data, recommendation=form.recommendation.data)
-        db.session.add(place)
-        db.session.commit()
-        flash('Congratulations, you have added a new place!')
-        return redirect(url_for('index'))
+        try:
+            uploaded_picture = form.picture.data
+            if uploaded_picture:
+                    picture = photos.save(request.files['picture'])
+                    response = cloudinary.uploader.upload("static/images/" + picture)
+                    picture_link = response.get("url")
+            else :
+                picture_link = ""
+            place = Place(name=form.name.data, latitude=form.latitude.data, longitude=form.longitude.data, picture=picture_link, description=form.description.data, parking=form.parking.data, repair=form.repair.data, recommendation=form.recommendation.data)
+            db.session.add(place)
+            db.session.commit()
+            flash('Congratulations, you have added a new place!')
+            return redirect(url_for('index'))
+        except:
+            flash('There was an error adding your place')
+            return redirect(url_for('add_place'))
     return render_template('add_place.html', title='Add Place',form=form)
 
 # Parts Page

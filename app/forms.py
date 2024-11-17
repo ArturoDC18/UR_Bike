@@ -4,6 +4,10 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 import sqlalchemy as sa
 from app import db
 from app.models import User
+from flask_wtf.file import FileField, FileAllowed
+from flask_uploads import UploadSet, IMAGES, configure_uploads
+
+photos= UploadSet('photos', IMAGES)
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -14,7 +18,7 @@ class PlaceForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     latitude = StringField('Latitude', validators=[DataRequired()])
     longitude = StringField('Longitude', validators=[DataRequired()])
-    picture = StringField('Picture')
+    picture = FileField('Picture', validators=[FileAllowed(photos)])
     description = StringField('Description', validators=[DataRequired()])
     parking = BooleanField('Parking')
     repair = BooleanField('Repair')

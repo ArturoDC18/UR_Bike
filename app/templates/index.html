@@ -91,12 +91,7 @@ map.on('load', () => {
   });
 });
 
-  // Add bike rack markers
-  const bikeRacks = [
-    { coordinates: [-77.629503, 43.128123], name: "Rush Rhees Library Bike Rack" },
-    { coordinates: [-77.626684, 43.129515], name: "Sue B"},    // Add more bike rack locations as needed
-  ];
-
+// Fetch locations from the server
   fetch('/locations')
             .then(response => response.json())
             .then(data => {
@@ -113,7 +108,11 @@ map.on('load', () => {
                     // Add a marker for each location
                     new mapboxgl.Marker(el)
                         .setLngLat([location.latitude, location.longitude])
-                        .setPopup(new mapboxgl.Popup().setHTML(`<h4>${location.name}</h4>`))
+                        .setPopup(new mapboxgl.Popup().setHTML(`
+                            <h4>${location.name}</h4>
+                            ${location.picture ? `<img src="${location.picture}" alt="${location.name}" style="width:100px;height:auto;">` : ''}
+                            ${location.description ? `<p>${location.description}</p>` : ''}
+                        `))
                         .addTo(map);
                 });
             });
