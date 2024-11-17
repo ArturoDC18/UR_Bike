@@ -1,71 +1,77 @@
 {% extends "base.html" %}
 
 {% block main %}
+<div class="container mt-4 new-place-form">
+    <h1 class="text-center mb-4">New Place</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                
+                <div class="form-outline mb-4">
+                    {{ form.name(class="form-control", placeholder="Name") }}
+                    {% for error in form.name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
 
-<h1>New Place</h1>
+                <div class="form-outline mb-4">
+                    {{ form.latitude(class="form-control", placeholder="Latitude") }}
+                    {% for error in form.latitude.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
 
-<form action="" method="post" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.name.label }}<br>
-        {{ form.name(size=32) }}<br>
-        {% for error in form.name.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.latitude.label }}<br>
-        {{ form.latitude(size=32) }}<br>
-        {% for error in form.latitude.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.longitude.label }}<br>
-        {{ form.longitude(size=32) }}<br>
-        {% for error in form.longitude.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.picture.label }}<br>
-        {{ form.picture(size=32) }}<br>
-        {% for error in form.picture.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.description.label }}<br>
-        {{ form.description(size=32) }}<br>
-        {% for error in form.description.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
+                <div class="form-outline mb-4">
+                    {{ form.longitude(class="form-control", placeholder="Longitude") }}
+                    {% for error in form.longitude.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
 
-<p>
-    {{ form.parking.label }}<br>
-    {{ form.parking() }}<br>
-    {% for error in form.parking.errors %}
-    <span style="color: red;">[{{ error }}]</span>
-    {% endfor %}
-</p>
+                <div class="form-outline mb-4">
+                    {{ form.picture(class="form-control", placeholder="Picture URL") }}
+                    {% for error in form.picture.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
 
-<p>
-    {{ form.repair.label }}<br>
-    {{ form.repair() }}<br>
-    {% for error in form.repair.errors %}
-    <span style="color: red;">[{{ error }}]</span>
-    {% endfor %}
-</p>
+                <div class="form-outline mb-4">
+                    {{ form.description(class="form-control", placeholder="Description") }}
+                    {% for error in form.description.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
 
-<p>
-    {{ form.recommendation.label }}<br>
-    {{ form.recommendation() }}<br>
-    {% for error in form.recommendation.errors %}
-    <span style="color: red;">[{{ error }}]</span>
-    {% endfor %}
-</p>
+                <div class="form-check form-check-inline mb-4">
+                    {{ form.parking(class="form-check-input") }}
+                    {{ form.parking.label(class="form-check-label") }}
+                    {% for error in form.parking.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
 
-    <p>{{ form.submit() }}</p>
-</form>
+                <div class="form-check form-check-inline mb-4">
+                    {{ form.repair(class="form-check-input") }}
+                    {{ form.repair.label(class="form-check-label") }}
+                    {% for error in form.repair.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-check form-check-inline mb-4">
+                    {{ form.recommendation(class="form-check-input") }}
+                    {{ form.recommendation.label(class="form-check-label") }}
+                    {% for error in form.recommendation.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                <div class="text-center">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

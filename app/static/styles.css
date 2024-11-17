@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
-
 body {
   margin: 0;
   padding: 0;
@@ -68,6 +67,10 @@ body * {
   right: 2%; /* Adjust right placement */
   text-align: right;
   z-index: 2;
+  display: flex; /* Ensure the text stays on one line */ 
+  align-items: center;
+  display: inline-block; /* Ensure the text stays on one line */ 
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .nav-links a {
@@ -111,6 +114,7 @@ body * {
   cursor: pointer;
   border-radius: 50%; /* Optional: For rounded markers */
 }
+
 .repair-marker {
   background-image: url('/static/bicycle.png'); /* Replace with the path to your bike rack image */
   background-size: cover;
@@ -129,12 +133,6 @@ body * {
   border-radius: 50%; 
 }
 
-
-.mapboxgl-ctrl-directions-summary {
-  display: none;
-}
-
-
 .mapboxgl-ctrl-directions-summary {
   display: none;
 }
@@ -149,12 +147,13 @@ body * {
   font-size: 1rem; /* Adjust font size for better readability */
   border-radius: 0.25rem; /* Add some border radius for a nice look */
   background-color: rgba(255, 255, 255, 0.8);
-  color: #333
+  color: #333;
 }
 
 .form-label {
   margin-left: 0.5rem; /* Add a little space to label */
 }
+
 
 .btn-primary {
   width: 100%; /* Full width button */
@@ -258,6 +257,19 @@ body * {
 
 .custom-button:hover {
   background-color: #a8a892;
+}
+
+.new-place-form .form-check-label { 
+  margin-left: 0.5rem; 
+}
+
+.new-place-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  margin: 0; /* Ensure no margin interferes */
+  padding: 0; /* Reset padding that might affect centering */
 }
 
 
