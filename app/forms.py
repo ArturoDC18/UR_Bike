@@ -18,7 +18,7 @@ class PlaceForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     latitude = StringField('Latitude', validators=[DataRequired()])
     longitude = StringField('Longitude', validators=[DataRequired()])
-    picture = FileField('Picture', validators=[FileAllowed(photos)])
+    picture = StringField('Picture URL')
     description = StringField('Description', validators=[DataRequired()])
     parking = BooleanField('Parking')
     repair = BooleanField('Repair')
