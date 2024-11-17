@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block main %}
     <h2>{{ part.name }}</h2>
     <p><strong>Description:</strong> {{ part.description }}</p>
-    <p><strong>Where to Buy:</strong> {{ part.where_to_buy }}</p>
-    <p><strong>How to Fix:</strong> {{ part.how_to_fix }}</p>
+    <p><strong>Where to Buy:</strong> <a href="{{ part.buy_link }}" target="_blank">{{ part.buy_link }}</a></p>
     <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Parts List</a>
 {% endblock %}
