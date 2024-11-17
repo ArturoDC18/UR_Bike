@@ -67,17 +67,27 @@ map.on('load', () => {
     { coordinates: [-77.626684, 43.129515], name: "Sue B"},    // Add more bike rack locations as needed
   ];
 
-  bikeRacks.forEach(rack => {
-  // Create a marker element with the bike rack image
-  const el = document.createElement('div');
-  el.className = 'bike-rack-marker';
+  fetch('/locations')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(location => {
 
-  // Add marker to map
-  new mapboxgl.Marker(el)
-    .setLngLat(rack.coordinates)
-    .setPopup(new mapboxgl.Popup().setHTML(rack.name)) // Add a popup if needed
-    .addTo(map);
-});
+                    const el = document.createElement('div');
+                    if (location.parking) {
+                        el.className = 'bike-rack-marker';
+                    } else if (location.repair) {
+                        el.className = 'repair-marker';
+                    } else {
+                        el.className = 'recommendation-marker';
+                    }
+                    // Add a marker for each location
+                    new mapboxgl.Marker(el)
+                        .setLngLat([location.latitude, location.longitude])
+                        .setPopup(new mapboxgl.Popup().setHTML(`<h4>${location.name}</h4>`))
+                        .addTo(map);
+                });
+            });
+
 });
 
 

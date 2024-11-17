@@ -16,9 +16,11 @@ class Place(db.Model):
     name = db.Column(db.String(64), index=True)
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
-    picture = db.Column(db.String(128))
+    picture = db.Column(db.String(128), nullable = True)
     description = db.Column(db.String(128))
-    tags = db.Column(db.String(128))
+    parking = db.Column(db.Boolean, default=False)
+    repair = db.Column(db.Boolean, default=False)
+    recommendation = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return '<Place {}>'.format(self.name)
@@ -35,6 +37,8 @@ class User(UserMixin, db.Model):
         self.password_hash = generate_password_hash(password)
     def set_admin(self):
         self.admin=True
+    def is_admin(self):
+        return self.admin
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
