@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div id="map" style="width: 85%; height: 60vh;"></div>
+<div class="map-container">
+    <div id="map"></div>
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoicGhhcmkiLCJhIjoiY20za2oza2twMGZ0ZTJpcHd4bm1rNnZsYSJ9.aTw69jaVO9sD3m81sMObfg';
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/navigation-guidance-day-v4',
-  center: [-77.6298, 43.1286], // Coordinates for University of Rochester
-  zoom: 16.4,
-  pitch: 0, // Keep the pitch to 0 for top-down view
-  bearing: 0,
-  antialias: true
-});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const map = new mapboxgl.Map({
+    container: 'map', // ID of the container
+    style: 'mapbox://styles/mapbox/navigation-guidance-day-v4', // Map style
+    center: [-77.6298, 43.1286], // University of Rochester coordinates
+    zoom: 16.4, // Initial zoom level
+    pitch: 0,
+    bearing: 0,
+    antialias: true
+  });
 
 
 
@@ -51,25 +55,6 @@ map.on('load', () => {
       'fill-extrusion-opacity': 0.6
     }
   });
-
-  // Add bike rack markers
-  const bikeRacks = [
-    { coordinates: [-77.629503, 43.128123], name: "Rush Rhees Library Bike Rack" },
-    // Add more bike rack locations as needed
-  ];
-
-  bikeRacks.forEach(rack => {
-  // Create a marker element with the bike rack image
-  const el = document.createElement('div');
-  el.className = 'bike-rack-marker';
-
-  // Add marker to map
-  new mapboxgl.Marker(el)
-    .setLngLat(rack.coordinates)
-    .setPopup(new mapboxgl.Popup().setHTML(rack.name)) // Add a popup if needed
-    .addTo(map);
-});
 });
 </script>
 {% endblock %}
-
