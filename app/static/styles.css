@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #06402B; /* Dark green background */
-  color: white;
+  color: #c0c0ae;
   font-family: 'Arial', sans-serif; /* Minimalistic font */
 }
 
@@ -45,6 +45,7 @@ body * {
 
 .header-overlay h1 {
   font-size: 5vh; /* Responsive font size */
+  font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
   font-weight: bold; /* Make it stand out */
   margin: 0;
 }
@@ -59,7 +60,7 @@ body * {
 }
 
 .nav-links a {
-  color: white;
+  color: #c0c0ae;
   text-decoration: none;
   font-size: 1.5vh; /* Responsive font size */
   margin-left: 2%; /* Increased spacing between links */
@@ -79,7 +80,7 @@ body * {
   max-width: 1200px; /* Maximum width */
   height: 70vh; /* Adjust height */
   margin: 12vh auto; /* Add vertical space and center horizontally */
-  border: 2px solid white; /* Optional: border */
+  border: 2px solid #c0c0ae; /* Optional: border */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8); /* Optional: shadow */
   border-radius: 1vh; /* Rounded corners */
   display: block; /* Block element */

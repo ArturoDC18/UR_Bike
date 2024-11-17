@@ -14,31 +14,22 @@
         <link rel="stylesheet" href="/static/styles.css">
     </head>
     <body>
-        <nav class="bg-dark border navbar navbar-expand-md navbar-dark sticky-top">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                <img src="" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                UR Bike
-              </a>
-            </div>
-          </nav>
-        <div>UR Bike: <a href="/index">Home</a></div>
-            <div>Repair: <a href="/repair">Repair</a></div>
+        <!-- Header -->
+        <div class="header-overlay">
+            <img src="/static/URBike-circle.png" alt="UR Bike Logo">
+            <h1>UR Bike</h1>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-links">
+            <a href="/index">Home</a>
+            <a href="/repair">Repair</a>
             {% if current_user.is_anonymous %}
             <a href="{{ url_for('login') }}">Login</a>
             {% else %}
             <a href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
-            <hr>
-        
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                    Bootstrap
-                </a>
-            </div>
-        </nav>
+        </div>
 
         <!-- Main Content -->
         <div class="container mt-4">
