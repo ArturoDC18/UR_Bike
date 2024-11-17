@@ -55,7 +55,7 @@ def add_place():
     return render_template('add_place.html', title='Add Place',form=form)
 
 # Parts Page
-@app.route('/part/<int:part_id>')
+@app.route('/part_details/<int:part_id>')
 def part_details(part_id):
     part = BikePart.query.get_or_404(part_id)
     return render_template('part_details.html', part=part)
