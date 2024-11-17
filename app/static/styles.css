@@ -111,5 +111,10 @@ body * {
 }
 
 
+.mapboxgl-ctrl-directions-summary {
+  display: none;
+}
+
+
 
 
