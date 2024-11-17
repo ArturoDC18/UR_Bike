@@ -8,6 +8,7 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config['SECRET_KEY'] = 'your_secret_key_here'
+app.debug = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)

@@ -11,7 +11,6 @@ class BikePart(db.Model):
     where_to_buy = db.Column(db.Text, nullable=False)
     how_to_fix = db.Column(db.Text, nullable=False)
 
-
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True)
