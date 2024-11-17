@@ -112,6 +112,16 @@ body * {
   border-radius: 50%; /* Optional: For rounded markers */
 }
 
+
+.mapboxgl-ctrl-directions-summary {
+  display: none;
+}
+
+
+.mapboxgl-ctrl-directions-summary {
+  display: none;
+}
+
 .form-outline {
   margin-bottom: 1rem; /* Add spacing between form fields */
 }
