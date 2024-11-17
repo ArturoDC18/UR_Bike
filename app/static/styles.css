@@ -273,4 +273,15 @@ body * {
 }
 
 
+/* CSS for scrollable table */
+.scrollable-table {
+  max-height: 400px; /* Adjust the height as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+  border: 1px solid #ddd; /* Optional: Adds a border for better visibility */
+}
+
+/* Optional: Add padding or margin adjustments if necessary */
+.scrollable-table table {
+  margin-bottom: 0; /* Prevents extra spacing at the bottom of the table */
+}
 
