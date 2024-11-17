@@ -50,4 +50,13 @@ body * {
   margin: 0;  
 }
 
+.bike-rack-marker {
+  background-image: url('/static/bicycle.png'); /* Replace with the path to your bike rack image */
+  background-size: cover;
+  width: 30px; /* Adjust the width of the marker */
+  height: 30px; /* Adjust the height of the marker */
+  cursor: pointer;
+  border-radius: 50%; /* Optional: For rounded markers */
+}
+
   
