@@ -127,8 +127,8 @@ body * {
 .recommendation-marker {
   background-image: url('/static/URBike.png'); /* Replace with the path to your bike rack image */
   background-size: cover;
-  width: 3vh; /* Responsive width of the marker */
-  height: 3vh; /* Responsive height of the marker */
+  width: 6vh; /* Responsive width of the marker */
+  height: 6vh; /* Responsive height of the marker */
   cursor: pointer;
   border-radius: 50%; 
 }
