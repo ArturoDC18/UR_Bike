@@ -47,7 +47,7 @@ def add_place():
             if uploaded_picture:
                     picture = photos.save(request.files['picture'])
                     response = cloudinary.uploader.upload("static/images/" + picture)
-                    picture_link = response.get("url")
+                    picture_link = response.get("secure_url")
             else :
                 picture_link = ""
             place = Place(name=form.name.data, latitude=form.latitude.data, longitude=form.longitude.data, picture=picture_link, description=form.description.data, parking=form.parking.data, repair=form.repair.data, recommendation=form.recommendation.data)
