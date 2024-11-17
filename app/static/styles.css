@@ -1,10 +1,11 @@
-/* General body styling */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #06402B; /* Dark green background */
+  background-color: #06402B;
   color: #c0c0ae;
-  font-family: 'Arial', sans-serif; /* Minimalistic font */
+  font-family: 'Arial', sans-serif;
 }
 
 body::after {
@@ -38,16 +39,24 @@ body * {
   z-index: 2;
 }
 
+.header-overlay a {
+  display: inline-block;
+  margin-right: 3%;
+}
+
 .header-overlay img {
   height: 10vh; /* Responsive logo size */
-  margin-right: 1%; /* Space between logo and text */
+  margin-right: 5%; /* Space between logo and text */
 }
 
 .header-overlay h1 {
   font-size: 5vh; /* Responsive font size */
   font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
-  font-weight: bold; /* Make it stand out */
   margin: 0;
+  display: flex; /* Ensure the text stays on one line */ 
+  align-items: center;
+  display: inline-block; /* Ensure the text stays on one line */ 
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .nav-links {
@@ -62,7 +71,7 @@ body * {
 .nav-links a {
   color: #c0c0ae;
   text-decoration: none;
-  font-size: 1.5vh; /* Responsive font size */
+  font-size: 2vh; /* Responsive font size */
   margin-left: 2%; /* Increased spacing between links */
   padding: 1vh; /* Responsive padding */
 }
