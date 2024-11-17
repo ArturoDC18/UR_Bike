@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     antialias: true
   });
 
+  
+  const nav = new mapboxgl.NavigationControl();
+  map.addControl(nav);
+
 
 
 // Add 3D buildings
@@ -75,6 +79,9 @@ map.on('load', () => {
     .addTo(map);
 });
 });
+
+
+
 </script>
 
 {% endblock %}
