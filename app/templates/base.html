@@ -1,50 +1,41 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <!-- Meta tags and Bootstrap CSS -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
               rel="stylesheet" 
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
               crossorigin="anonymous">
-
-        <!-- Mapbox GL JS CSS -->
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
-
         <title>UR Bike</title>
         <link rel="icon" href="/static/URBike.png">
         <link rel="stylesheet" href="/static/styles.css">
     </head>
     <body>
-
-        <header class="header">
-            <img src="/static/URBike-circle.png" alt="UR Bike Logo">
+        <!-- Header -->
+        <div class="header-overlay">
+            <img src="/static/URBike-round.png" alt="UR Bike Logo">
             <h1>UR Bike</h1>
-        </header>
+        </div>
 
         <!-- Navigation -->
-        <div>UR Bike: <a href="/index">Home</a></div>
-        <div>Repair: <a href="/repair">Repair</a></div>
-        <hr>
+        <div class="nav-links">
+            <span><a href="/index">Home</a></span>
+            <span><a href="/repair">Repair</a></span>
+        </div>
 
-        <nav class="navbar bg-body-tertiary">
-            <!-- Navbar content -->
-        </nav>
-
+        <!-- Main Content -->
         <div class="container mt-4">
             {% block main %}
             {% endblock %}
         </div>
 
-        <!-- Bootstrap JS -->
+        <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
                 crossorigin="anonymous"></script>
-
-        <!-- Mapbox GL JS -->
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-
         {% block scripts %}
         {% endblock %}
     </body>

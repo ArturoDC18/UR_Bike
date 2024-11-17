@@ -1,12 +1,10 @@
-html, body {
+/* General body styling */
+body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  background-color: #06402B;
+  background-color: #06402B; /* Dark green background */
   color: white;
-  position: relative;
-  overflow: hidden;
-  scroll-behavior: smooth;
+  font-family: 'Arial', sans-serif; /* Minimalistic font */
 }
 
 body::after {
@@ -30,24 +28,65 @@ body * {
   z-index: 1;
 }
 
-.header {
+.header-overlay {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0;
-  background-color: #06402B; /* Match your body background */
+  align-items: center; /* Center logo and text vertically */
+  justify-content: center; /* Center them horizontally */
+  position: absolute;
+  top: 15%; /* Adjust height placement */
+  left: 50%;
+  transform: translate(-50%, -15%);
+  text-align: left; /* Text aligned to the right of the logo */
+  z-index: 1;
 }
 
-.header img {
-  height: 60px; /* Adjust logo size */
-  margin-right: 15px; /* Add spacing between logo and text */
+.header-overlay img {
+  height: 120px; /* Larger logo */
+  margin-right: 20px; /* Space between logo and text */
 }
 
-.header h1 {
-  font-family: 'Georgia', serif; /* Elegant font */
-  font-size: 2.5rem; /* Adjust font size */
-  color: white; /* Match your page theme */
-  margin: 0;  
+.header-overlay h1 {
+  font-size: 3rem; /* Larger font size */
+  font-weight: bold; /* Make it stand out */
+  margin: 0;
+}
+
+.nav-links {
+  position: absolute;
+  top: 20px; /* Adjust distance from the top */
+  right: 20px; /* Adjust distance from the right */
+  text-align: right;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-right: 30px; /* Increased spacing between links */
+}
+
+.nav-links a:first-child {
+  margin-left: 0; /* No margin for the first link */
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+#map {
+  width: 90%; /* Adjust width */
+  max-width: 1200px; /* Maximum width */
+  height: 70vh; /* Adjust height */
+  margin: 12vh auto; /* Add vertical space (5vh) and center horizontally */
+  border: 2px solid white; /* Optional: border */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: shadow */
+  border-radius: 10px; /* Rounded corners */
+  display: block; /* Block element */
+  overflow: hidden; /* Prevent overflow from rounding */
 }
 
   
+.map-container {
+  text-align: center; /* Ensures the map container is centered */
+  padding: 20px 0; /* Adds some vertical spacing */
+}
