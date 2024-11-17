@@ -7,6 +7,7 @@ body {
   background-color: #06402B;
   color: #c0c0ae;
   font-family: 'Arial', sans-serif;
+  overflow: hidden;
 }
 
 body::after {
@@ -165,9 +166,29 @@ body * {
 #register-link {
   color: #c0c0ae; /* Same color as .nav-links a */
   text-decoration: none;
-  font-size: 2vh; /* Responsive font size */
+  font-size: inherit; /* Responsive font size */
 }
 
 #register-link:hover {
   text-decoration: underline;
 }
+
+.alert-messages {
+  margin-top: 20px; /* Add margin to move the messages down */
+  padding: 10px; /* Add padding for better readability */
+  background-color: rgba(76, 175, 80, 0.3);
+  border: 1px solid #4CAF50; /* Border to match the background color */
+  color: white; /* Dark red text color */
+  border-radius: 4px; /* Rounded corners */
+  list-style-type: none; /* Remove bullet points */
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.alert-messages li {
+  margin-bottom: 5px; /* Space between individual messages */
+}
+
+

@@ -37,7 +37,7 @@
         <div class="container mt-4">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <ul>
+            <ul class="alert-messages">
                 {% for message in messages %}
                 <li>{{ message }}</li>
                 {% endfor %}
