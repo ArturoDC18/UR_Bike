@@ -104,12 +104,29 @@ body * {
 }
 
 .bike-rack-marker {
+  background-image: url('/static/bicycle2.png'); /* Replace with the path to your bike rack image */
+  background-size: cover;
+  width: 5vh; /* Responsive width of the marker */
+  height: 5vh; /* Responsive height of the marker */
+  cursor: pointer;
+  border-radius: 50%; /* Optional: For rounded markers */
+}
+.repair-marker {
   background-image: url('/static/bicycle.png'); /* Replace with the path to your bike rack image */
+  background-size: cover;
+  width: 5vh; /* Responsive width of the marker */
+  height: 5vh; /* Responsive height of the marker */
+  cursor: pointer;
+  border-radius: 50%; 
+}
+
+.recommendation-marker {
+  background-image: url('/static/URBike.png'); /* Replace with the path to your bike rack image */
   background-size: cover;
   width: 3vh; /* Responsive width of the marker */
   height: 3vh; /* Responsive height of the marker */
   cursor: pointer;
-  border-radius: 50%; /* Optional: For rounded markers */
+  border-radius: 50%; 
 }
 
 

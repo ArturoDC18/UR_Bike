@@ -38,6 +38,9 @@
             {% else %}
             <a href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
+            {% if current_user.admin %}
+            <a href="{{ url_for('add_place') }}">Add Place</a>
+            {% endif %}
         </div>
 
         <!-- Main Content -->
